@@ -1,0 +1,14 @@
+<svg class="w-full h-screen object-fit" width="1340" height="810" preserveAspectRatio="none" viewBox="0 0 1340 810"
+    fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g opacity="0.2" filter="url(#filter0_f_3016_349)">
+        <path d="M100 810L1240 0.000197238L1340 0.000144516L500 810L100 810Z" fill="#FFFFCC" />
+    </g>
+    <defs>
+        <filter id="filter0_f_3016_349" x="0" y="-99.9999" width="1440" height="1010" filterUnits="userSpaceOnUse"
+            color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+            <feGaussianBlur stdDeviation="50" result="effect1_foregroundBlur_3016_349" />
+        </filter>
+    </defs>
+</svg>

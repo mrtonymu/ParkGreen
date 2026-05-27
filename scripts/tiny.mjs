@@ -1,0 +1,10 @@
+import { chromium } from "playwright";
+const b = await chromium.launch();
+const p = await b.newPage({ viewport: { width: 900, height: 620 }, deviceScaleFactor: 1 });
+await p.goto("http://localhost:3001/", { waitUntil: "networkidle", timeout: 60000 });
+await p.waitForTimeout(700);
+const y = await p.evaluate(() => document.getElementById("facilities").getBoundingClientRect().top + window.scrollY);
+await p.evaluate((yy) => window.scrollTo(0, yy), y);
+await p.waitForTimeout(500);
+await p.screenshot({ path: "/tmp/rp/fac-tiny.png" });
+await b.close(); console.log("DONE");

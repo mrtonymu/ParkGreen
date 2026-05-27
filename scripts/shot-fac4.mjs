@@ -1,0 +1,10 @@
+import { chromium } from "playwright";
+const b = await chromium.launch();
+const p = await b.newPage({ viewport: { width: 1500, height: 760 }, deviceScaleFactor: 2 });
+await p.goto("http://localhost:3001/", { waitUntil: "networkidle", timeout: 60000 });
+const plan = p.locator('img[alt="River Park facilities masterplan"]').locator("xpath=..");
+await plan.scrollIntoViewIfNeeded();
+await p.waitForTimeout(400);
+const box = await plan.boundingBox();
+await p.screenshot({ path: "/tmp/rp/fac-right.png", clip: { x: box.x + box.width * 0.58, y: box.y, width: box.width * 0.42, height: box.height } });
+await b.close(); console.log("DONE");

@@ -1,26 +1,141 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ── Park Green brand palette (warm editorial) ── */
+@theme {
+  --color-espresso: #241b16; /* warm near-black — hero, footer, dark text */
+  --color-clay: #a97560; /* signature warm — bands, headings, eyebrows */
+  --color-coral: #e3947a; /* primary accent — CTAs, active states */
+  --color-peach: #fdcdac; /* soft secondary */
+  --color-cream: #f7f4f2; /* content background */
+  --color-paper: #ffffff;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-cormorant);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  color-scheme: light;
+}
+
+/* Anchor-nav: animate the jump, and offset it so the fixed header never
+   covers the target section's heading. */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-espresso);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Centered section-title ornament: short rule with a clay diamond. */
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+.ornament::before,
+.ornament::after {
+  content: "";
+  width: 2.5rem;
+  height: 1px;
+  background: var(--color-clay);
+  opacity: 0.5;
+}
+
+/* ── Texture: faint grain over dark imagery ── */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── Entrance fade-up ── */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Hero parallax (CSS scroll-timeline; static where unsupported) ── */
+@keyframes parallax {
+  to {
+    transform: translateY(12%);
+  }
+}
+.parallax {
+  animation: parallax linear both;
+  animation-timeline: scroll(root);
+  animation-range: 0 120vh;
+}
+
+/* (.reveal kept as a no-op hook in markup — content is always visible.
+   A scroll-reveal can be reintroduced later via IntersectionObserver if wanted.) */
+
+/* Facility-pin halo — matches the live site's marker pulse. */
+@keyframes pulse-river {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(168, 117, 96, 0.75);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(168, 117, 96, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(168, 117, 96, 0);
+  }
+}
+.pulse-river {
+  animation: pulse-river 2s infinite;
+}
+
+/* Highlights marquee — seamless loop of duplicated content (translateX -50%). */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee 38s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .rise,
+  .parallax,
+  .pulse-river,
+  .marquee-track {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
 }

@@ -1,0 +1,10 @@
+import { chromium } from "playwright";
+const b = await chromium.launch();
+const p = await b.newPage({ viewport: { width: 1440, height: 1000 } });
+await p.goto("http://localhost:3001/", { waitUntil: "networkidle", timeout: 60000 });
+const el = await p.$("#progress");
+await el.scrollIntoViewIfNeeded();
+await p.waitForTimeout(800);
+await el.screenshot({ path: "/tmp/rp/mine-progress.png" });
+await b.close();
+console.log("DONE");

@@ -1,0 +1,16 @@
+import { chromium } from "playwright";
+const b = await chromium.launch();
+const p = await b.newPage({ viewport: { width: 1440, height: 860 }, deviceScaleFactor: 2 });
+await p.goto("http://localhost:3001/", { waitUntil: "networkidle", timeout: 60000 });
+await p.waitForTimeout(800);
+await p.screenshot({ path: "/tmp/rp/lg-top.png", clip: { x: 0, y: 0, width: 1440, height: 120 } });
+await p.evaluate(() => window.scrollTo(0, 1400));
+await p.waitForTimeout(700);
+await p.screenshot({ path: "/tmp/rp/lg-scrolled.png", clip: { x: 0, y: 0, width: 1440, height: 120 } });
+const aw = p.locator("#awards");
+await aw.scrollIntoViewIfNeeded(); await p.waitForTimeout(500);
+await aw.screenshot({ path: "/tmp/rp/lg-awards.png" });
+const f = p.locator("footer");
+await f.scrollIntoViewIfNeeded(); await p.waitForTimeout(500);
+await f.screenshot({ path: "/tmp/rp/lg-footer.png" });
+await b.close(); console.log("DONE");
