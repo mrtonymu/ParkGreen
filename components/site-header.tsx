@@ -119,7 +119,7 @@ export function SiteHeader() {
 
             <a
               href="#enquire"
-              className={`breathe-halo whitespace-nowrap rounded-[2px] border px-4 py-2.5 text-[0.7rem] font-medium uppercase tracking-[0.16em] transition-colors duration-300 sm:px-5 ${
+              className={`press-bounce whitespace-nowrap rounded-[2px] border px-4 py-2.5 text-[0.7rem] font-medium uppercase tracking-[0.16em] transition-colors duration-300 sm:px-5 ${
                 scrolled
                   ? "border-coral bg-coral text-espresso hover:bg-coral/90"
                   : "border-cream/50 text-cream hover:bg-cream hover:text-espresso"

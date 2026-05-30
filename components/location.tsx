@@ -85,7 +85,7 @@ export function Location() {
               className="font-medium text-coral underline-offset-4 transition-colors hover:underline"
             >
               Get the location guide on WhatsApp{" "}
-              <span aria-hidden className="breathe-arrow">
+              <span aria-hidden className="arrow-wiggle">
                 →
               </span>
             </a>

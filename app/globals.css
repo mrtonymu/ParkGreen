@@ -123,52 +123,71 @@ body {
   }
 }
 
-/* ── CTA "breathing" — sparse on purpose. Only 3 elements on the whole page
-   use these: Hero primary button (halo) + 2 mid-page WhatsApp text links
-   (arrow nudge). More than 3 = visual noise, fewer = no signal. ── */
+/* ── CTA motion — sparse on purpose. Only 4 elements pulse: Header Register
+   (sticky) + Hero primary (press-bounce) + 2 mid-page WhatsApp arrows
+   (arrow-wiggle). More than 4 = visual noise, fewer = no signal. ── */
 
-/* Halo — a soft coral ring expands and fades on the Hero primary CTA. Uses
-   box-shadow only so layout is untouched. Delay 1.5s so the first beat lands
-   after the rise-in animation settles. Pauses on hover/focus so the button
-   feels "selected" once the user engages it. */
-@keyframes breathe-halo {
+/* Press-bounce — button "presses itself" once every 3.5s. Sinks 4px + scales
+   to 97% on the way down, pops back with a 102% overshoot for spring feel.
+   Reads as "tap me" — universal button language, not desperation. Idle for
+   86% of cycle, motion in the last 14% (~0.5s of 3.5s), then rests. */
+@keyframes press-bounce {
   0%,
+  86%,
   100% {
-    box-shadow: 0 0 0 0 rgba(227, 148, 122, 0);
+    transform: translateY(0) scale(1);
   }
-  50% {
-    box-shadow: 0 0 22px 6px rgba(227, 148, 122, 0.42);
+  91% {
+    transform: translateY(4px) scale(0.97);
+  }
+  95% {
+    transform: translateY(-2px) scale(1.02);
   }
 }
-.breathe-halo {
-  animation: breathe-halo 4s ease-in-out 1.5s infinite;
+.press-bounce {
+  animation: press-bounce 3.5s ease-in-out 1.5s infinite;
 }
-.breathe-halo:hover,
-.breathe-halo:focus-visible {
+/* Late variant — 3s delay = Header's 1.5s + half a cycle, so two sticky CTAs
+   (Header Register + Hero primary) never bounce in sync (would feel like the
+   page is shaking instead of two separate signals). */
+.press-bounce-late {
+  animation: press-bounce 3.5s ease-in-out 3s infinite;
+}
+.press-bounce:hover,
+.press-bounce:focus-visible,
+.press-bounce-late:hover,
+.press-bounce-late:focus-visible {
   animation-play-state: paused;
 }
 
-/* Arrow nudge — only the "→" character translates ~8px right and back, with
-   a brief coral glow at the peak so the eye actually catches it. Wrap the
-   arrow in a <span class="breathe-arrow"> so the surrounding link text never
-   shifts. Same 1.5s delay so it doesn't fire before the user can read the
-   line. */
-@keyframes breathe-arrow {
+/* Arrow wiggle — quick left-right shake on the "→" glyph. Four wiggles burst
+   inside the first 20% of the cycle (~0.5s), then rests for 2s. Wrap the
+   arrow in a <span class="arrow-wiggle"> so the surrounding link text never
+   shifts. */
+@keyframes arrow-wiggle {
   0%,
+  20%,
   100% {
     transform: translateX(0);
-    filter: drop-shadow(0 0 0 rgba(227, 148, 122, 0));
   }
-  50% {
-    transform: translateX(8px);
-    filter: drop-shadow(0 0 6px rgba(227, 148, 122, 0.85));
+  4% {
+    transform: translateX(5px);
+  }
+  8% {
+    transform: translateX(-3px);
+  }
+  12% {
+    transform: translateX(5px);
+  }
+  16% {
+    transform: translateX(-3px);
   }
 }
-.breathe-arrow {
+.arrow-wiggle {
   display: inline-block;
-  animation: breathe-arrow 2.2s ease-in-out 1.5s infinite;
+  animation: arrow-wiggle 2.5s ease-in-out 1.5s infinite;
 }
-.breathe-arrow:hover {
+.arrow-wiggle:hover {
   animation-play-state: paused;
 }
 
@@ -196,8 +215,9 @@ body {
   .parallax,
   .pulse-river,
   .marquee-track,
-  .breathe-halo,
-  .breathe-arrow {
+  .press-bounce,
+  .press-bounce-late,
+  .arrow-wiggle {
     animation: none !important;
     opacity: 1;
     transform: none;
