@@ -73,7 +73,7 @@ export function WatchFilm() {
           </svg>
         </span>
         <span className="text-[0.74rem] font-medium uppercase tracking-[0.16em]">
-          Watch the Film
+          Watch · 2m 40s
         </span>
       </button>
 

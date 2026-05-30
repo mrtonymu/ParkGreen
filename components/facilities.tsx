@@ -40,7 +40,7 @@ export function Facilities() {
           <p className="mt-5 text-sm font-light text-cream/65">
             Level 11 — an entire deck given over to a 50-metre infinity pool,
             jacuzzi, gym, yoga, co-working, children&apos;s play and a BBQ
-            terrace. Hover the plan, or read the room.
+            terrace. Hover the plan to light each one up.
           </p>
         </div>
 

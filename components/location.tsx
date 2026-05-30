@@ -16,7 +16,7 @@ export function Location() {
     >
       <SectionHeading
         title="Location"
-        subtitle="Bridged to Pavilion Bukit Jalil, framed by parks and golf — connected on every side."
+        subtitle="Linked walk to Pavilion. 500m to the 80-acre park. SJK(C) Lai Meng at 950m."
       />
 
       <div className="mt-14 grid items-start gap-12 md:grid-cols-2 md:gap-16">

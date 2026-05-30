@@ -51,7 +51,7 @@ export function Gallery() {
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <SectionHeading
           title="Gallery"
-          subtitle="Artist's impressions of the residences, facilities and township."
+          subtitle="Nine renders of the building, the deck, and the unit you'll live in."
           tone="dark"
         />
 

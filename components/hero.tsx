@@ -9,7 +9,7 @@ import Image from "next/image";
 import heroRender from "@/public/images/pg/about_img_glow.jpg";
 import { WatchFilm } from "@/components/watch-film";
 import { PROJECT } from "@/lib/content";
-import { WA_TEXT, waLink } from "@/lib/wa";
+import { waLink } from "@/lib/wa";
 
 export function Hero() {
   return (
@@ -59,7 +59,7 @@ export function Hero() {
             className="rise mt-6 font-display text-[clamp(1.4rem,3vw,2.25rem)] font-normal leading-snug text-cream/90"
             style={{ animationDelay: "220ms" }}
           >
-            Room for family. Space for life.
+            4 bedrooms, 50 storeys, one bridge to Pavilion.
           </h1>
 
           <div
@@ -73,12 +73,15 @@ export function Hero() {
               Get VVIP Price &amp; Floor Plans
             </a>
             <a
-              href={waLink({ utm: "hero", text: WA_TEXT.generic })}
+              href={waLink({
+                utm: "hero",
+                text: "Hi, I'd like the current Park Green VVIP price list.",
+              })}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex h-12 items-center justify-center rounded-full border border-cream/50 px-8 text-[0.74rem] font-medium uppercase tracking-[0.16em] text-cream transition-colors duration-200 hover:bg-cream hover:text-espresso"
             >
-              WhatsApp
+              VVIP Price
             </a>
             <WatchFilm />
           </div>
