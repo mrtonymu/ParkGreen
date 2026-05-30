@@ -112,7 +112,7 @@ export function SiteFooter() {
               </a>
             </p>
             <p className="mt-2 text-[0.7rem] text-cream/45">
-              Reply within an hour
+              Personal reply by Anderson <span className="opacity-60">·</span> Within the hour
             </p>
           </div>
 

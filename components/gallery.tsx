@@ -107,8 +107,7 @@ export function Gallery() {
 
           <p className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-cream/55">
             <span>
-              Drag to explore · This is an embed of the developer&apos;s 360.{" "}
-              Tap our WhatsApp below for the full deck and unit availability.
+              Drag to explore — full deck and unit availability via WhatsApp below.
             </span>
             <a
               href="/360"

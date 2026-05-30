@@ -110,15 +110,15 @@ export const LOCATION_AMENITIES: { group: string; places: Place[] }[] = [
 export const PRIVILEGES: { title: string; body: string }[] = [
   {
     title: "Bridged to Pavilion",
-    body: "A residents-only pedestrian bridge links you straight into Pavilion Bukit Jalil — world-class retail, dining and cinema, a covered walk from your lobby.",
+    body: "A residents-only pedestrian bridge straight from your lobby into Pavilion Bukit Jalil — retail, dining, cinema. No rain, no roads.",
   },
   {
     title: "Bespoke Concierge",
-    body: "A dedicated concierge handles the everyday — reservations, deliveries, the small details — so privilege feels effortless.",
+    body: "A dedicated concierge handles reservations, deliveries, parcel pickup, and the small daily asks — so you don't.",
   },
   {
     title: "Sky Semi-D Homes",
-    body: "Expansive family layouts from 1,201 to 1,905 sq.ft., crafted for grand living high above the township.",
+    body: "1,201 to 1,905 sq.ft. — large enough to host, high enough to see Bukit Jalil City.",
   },
   {
     title: "80-Acre Park",

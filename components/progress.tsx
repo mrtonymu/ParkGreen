@@ -43,7 +43,7 @@ export function Progress() {
     >
       <SectionHeading
         title="Construction Progress"
-        subtitle="Rising on site in Bukit Jalil City — official updates through to completion in 2029."
+        subtitle="Rising on site — official photos through to handover March 2029."
       />
 
       {/* Countdown — big editorial number. Visible weight equal to the section
