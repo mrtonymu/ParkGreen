@@ -9,7 +9,6 @@ import Image from "next/image";
 import heroRender from "@/public/images/pg/about_img_glow.jpg";
 import { WatchFilm } from "@/components/watch-film";
 import { PROJECT } from "@/lib/content";
-import { waLink } from "@/lib/wa";
 
 export function Hero() {
   return (
@@ -71,17 +70,6 @@ export function Hero() {
               className="inline-flex h-12 items-center justify-center rounded-full bg-coral px-9 text-[0.74rem] font-medium uppercase tracking-[0.16em] text-espresso transition-colors duration-200 hover:bg-cream"
             >
               Get VVIP Price &amp; Floor Plans
-            </a>
-            <a
-              href={waLink({
-                utm: "hero",
-                text: "Hi, I'd like the current Park Green VVIP price list.",
-              })}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-12 items-center justify-center rounded-full border border-cream/50 px-8 text-[0.74rem] font-medium uppercase tracking-[0.16em] text-cream transition-colors duration-200 hover:bg-cream hover:text-espresso"
-            >
-              VVIP Price
             </a>
             <WatchFilm />
           </div>
