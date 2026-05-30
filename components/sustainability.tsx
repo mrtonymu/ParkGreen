@@ -52,6 +52,9 @@ export function Sustainability() {
           An address bridged to Pavilion Bukit Jalil, wrapped in 80 acres of
           green, and served like a private club.
         </p>
+        <p className="mt-4 text-[0.7rem] font-medium uppercase tracking-[0.32em] text-cream/60">
+          By appointment <span className="opacity-50">·</span> By Malton
+        </p>
 
         <div className="mt-7 inline-flex items-center gap-2 rounded-full border border-cream/25 px-4 py-1.5 text-[0.62rem] font-medium uppercase tracking-[0.22em] text-cream/85">
           <span className="h-1.5 w-1.5 rotate-45 bg-coral" aria-hidden />

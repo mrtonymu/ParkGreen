@@ -70,7 +70,7 @@ export function Hero() {
               href="#enquire"
               className="inline-flex h-12 items-center justify-center rounded-full bg-coral px-9 text-[0.74rem] font-medium uppercase tracking-[0.16em] text-espresso transition-colors duration-200 hover:bg-cream"
             >
-              Get Price List &amp; Floor Plans
+              Get VVIP Price &amp; Floor Plans
             </a>
             <a
               href={waLink({ utm: "hero", text: WA_TEXT.generic })}
@@ -88,7 +88,7 @@ export function Hero() {
       {/* Key facts — slim editorial strip, left-aligned */}
       <div className="rise px-6 pb-9 md:px-12" style={{ animationDelay: "420ms" }}>
         <div className="flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-cream/15 pt-5 sm:gap-x-8">
-          <Stat value={`From ${PROJECT.fromPrice}`} label="Indicative" accent />
+          <Stat value={`From ${PROJECT.fromPrice}`} label="VVIP Open" accent />
           <Divider />
           <Stat value="Freehold" label="Tenure" />
           <Divider />

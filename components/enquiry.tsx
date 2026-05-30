@@ -255,10 +255,10 @@ function RegisterForm({
                 : "cursor-not-allowed border-cream/25 bg-transparent text-cream/35"
             }`}
           >
-            Send on WhatsApp
+            Get My VVIP Price
           </a>
           <p className="mt-5 text-[0.6rem] uppercase tracking-[0.32em] text-cream/55">
-            Reply within an hour
+            Personal reply by Anderson <span className="opacity-50">·</span> Within the hour
           </p>
 
           {showErrors && !canSubmit && (

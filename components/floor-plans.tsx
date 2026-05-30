@@ -263,21 +263,22 @@ export function FloorPlans() {
           and block. Excludes legal fees, MRTA and stamp duty.
         </p>
 
-        {/* Reciprocity CTA — "all 8 + payment scheme" promises density, not
-            generic contact. Section-level so it shows once regardless of
-            which tab the buyer landed on. */}
+        {/* Reciprocity CTA — "8 plans + VVIP price + payment scheme" stacks
+            three concrete deliverables so the WhatsApp ask reads as a value
+            exchange, not a generic "contact us". Section-level so it shows
+            once regardless of which tab the buyer landed on. */}
         <p className="mt-10 text-sm text-espresso/70">
           Want it on paper?{" "}
           <a
             href={waLink({
               utm: "floor-plans",
-              text: "Hi, I'd like all 8 Park Green floor plan PDFs and the latest payment scheme.",
+              text: "Hi, I'd like all 8 Park Green floor plan PDFs, the current VVIP price list and the latest payment scheme.",
             })}
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium text-coral underline-offset-4 transition-colors hover:underline"
           >
-            Get all 8 floor plans + payment scheme on WhatsApp →
+            Get all 8 floor plans + VVIP price + payment scheme on WhatsApp →
           </a>
         </p>
       </div>

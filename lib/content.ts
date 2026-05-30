@@ -169,15 +169,18 @@ export const BUKIT_JALIL_CITY: Landmark[] = [
   },
 ];
 
-// Marquee highlights — the four irreducible selling points repeated just
+// Marquee highlights — the five irreducible selling points repeated just
 // before Enquiry, as a reminder beat. The rest of the facts (concierge,
 // sizes, bumi, BJC, etc.) live in their own sections; keeping the loop
-// short stops it reading as a recap of the whole page.
+// short stops it reading as a recap of the whole page. The VVIP item
+// carries the scarcity beat — it must be true (= a real spread vs. the
+// public launch price), not just a renamed launch tier.
 export const HIGHLIGHTS: string[] = [
   "Freehold Serviced Residences",
+  "VVIP Pricing Open · Limited",
   "Bridged to Pavilion Bukit Jalil",
   "80-Acre Recreational Park at Your Door",
-  "Completing 2029",
+  "Completing March 2029",
 ];
 
 // Construction progress — official site photos, newest first (completing 2029).
