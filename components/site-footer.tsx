@@ -19,10 +19,19 @@ function formatPhone(intl: string): string {
   return `+60 ${local.slice(0, 2)}-${local.slice(2, 5)} ${local.slice(5)}`;
 }
 
+// Malaysian local format: 60169177882 → "016-917 7882". Used in the
+// professional attribution line (which follows Malaysian REN convention).
+function formatPhoneLocal(intl: string): string {
+  if (!intl.startsWith("60")) return intl;
+  const local = "0" + intl.slice(2);
+  return `${local.slice(0, 3)}-${local.slice(3, 6)} ${local.slice(6)}`;
+}
+
 export function SiteFooter() {
   const year = new Date().getFullYear();
   const waHref = waLink({ utm: "footer", text: WA_TEXT.generic });
   const phonePretty = formatPhone(PROJECT.whatsapp);
+  const phoneLocal = formatPhoneLocal(PROJECT.whatsapp);
 
   return (
     <footer className="bg-espresso text-cream">
@@ -144,7 +153,7 @@ export function SiteFooter() {
           </p>
         </div>
 
-        {/* Bottom bar — Privacy + copyright + role disclosure */}
+        {/* Bottom bar — Privacy + agent attribution (Malaysian REN convention) */}
         <div className="mt-10 flex flex-col gap-3 border-t border-cream/10 pt-6 text-xs text-cream/45 md:flex-row md:items-center md:justify-between">
           <a
             href="/privacy"
@@ -152,9 +161,14 @@ export function SiteFooter() {
           >
             Privacy Notice (PDPA)
           </a>
-          <p>
-            &copy; {year} <span className="opacity-70">·</span> Official Sales
-            Consultant
+          <p className="flex flex-wrap items-center gap-x-2 gap-y-1">
+            <span>&copy; {year} by Anderson Chen</span>
+            <span aria-hidden className="opacity-50">|</span>
+            <span>REN 35567</span>
+            <span aria-hidden className="opacity-50">|</span>
+            <span>Dignity Real Estate</span>
+            <span aria-hidden className="opacity-50">|</span>
+            <span>{phoneLocal}</span>
           </p>
         </div>
       </div>
