@@ -148,22 +148,25 @@ body {
   animation-play-state: paused;
 }
 
-/* Arrow nudge — only the "→" character translates ~4px right and back. Wrap
-   the arrow in a <span class="breathe-arrow"> so the surrounding link text
-   never shifts. Same delay so it doesn't fire before the user can read the
+/* Arrow nudge — only the "→" character translates ~8px right and back, with
+   a brief coral glow at the peak so the eye actually catches it. Wrap the
+   arrow in a <span class="breathe-arrow"> so the surrounding link text never
+   shifts. Same 1.5s delay so it doesn't fire before the user can read the
    line. */
 @keyframes breathe-arrow {
   0%,
   100% {
     transform: translateX(0);
+    filter: drop-shadow(0 0 0 rgba(227, 148, 122, 0));
   }
   50% {
-    transform: translateX(4px);
+    transform: translateX(8px);
+    filter: drop-shadow(0 0 6px rgba(227, 148, 122, 0.85));
   }
 }
 .breathe-arrow {
   display: inline-block;
-  animation: breathe-arrow 2.5s ease-in-out 1.5s infinite;
+  animation: breathe-arrow 2.2s ease-in-out 1.5s infinite;
 }
 .breathe-arrow:hover {
   animation-play-state: paused;
