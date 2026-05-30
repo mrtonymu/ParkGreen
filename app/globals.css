@@ -123,6 +123,52 @@ body {
   }
 }
 
+/* ── CTA "breathing" — sparse on purpose. Only 3 elements on the whole page
+   use these: Hero primary button (halo) + 2 mid-page WhatsApp text links
+   (arrow nudge). More than 3 = visual noise, fewer = no signal. ── */
+
+/* Halo — a soft coral ring expands and fades on the Hero primary CTA. Uses
+   box-shadow only so layout is untouched. Delay 1.5s so the first beat lands
+   after the rise-in animation settles. Pauses on hover/focus so the button
+   feels "selected" once the user engages it. */
+@keyframes breathe-halo {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(227, 148, 122, 0);
+  }
+  50% {
+    box-shadow: 0 0 22px 6px rgba(227, 148, 122, 0.42);
+  }
+}
+.breathe-halo {
+  animation: breathe-halo 4s ease-in-out 1.5s infinite;
+}
+.breathe-halo:hover,
+.breathe-halo:focus-visible {
+  animation-play-state: paused;
+}
+
+/* Arrow nudge — only the "→" character translates ~4px right and back. Wrap
+   the arrow in a <span class="breathe-arrow"> so the surrounding link text
+   never shifts. Same delay so it doesn't fire before the user can read the
+   line. */
+@keyframes breathe-arrow {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+}
+.breathe-arrow {
+  display: inline-block;
+  animation: breathe-arrow 2.5s ease-in-out 1.5s infinite;
+}
+.breathe-arrow:hover {
+  animation-play-state: paused;
+}
+
 /* Highlights marquee — seamless loop of duplicated content (translateX -50%). */
 @keyframes marquee {
   from {
@@ -146,7 +192,9 @@ body {
   .rise,
   .parallax,
   .pulse-river,
-  .marquee-track {
+  .marquee-track,
+  .breathe-halo,
+  .breathe-arrow {
     animation: none !important;
     opacity: 1;
     transform: none;

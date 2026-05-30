@@ -69,7 +69,7 @@ export function Hero() {
           >
             <a
               href="#enquire"
-              className="inline-flex h-12 items-center justify-center rounded-full bg-coral px-9 text-[0.74rem] font-medium uppercase tracking-[0.16em] text-espresso transition-colors duration-200 hover:bg-cream"
+              className="breathe-halo inline-flex h-12 items-center justify-center rounded-full bg-coral px-9 text-[0.74rem] font-medium uppercase tracking-[0.16em] text-espresso transition-colors duration-200 hover:bg-cream"
             >
               Get VVIP Price &amp; Floor Plans
             </a>

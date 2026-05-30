@@ -84,7 +84,10 @@ export function Location() {
               rel="noopener noreferrer"
               className="font-medium text-coral underline-offset-4 transition-colors hover:underline"
             >
-              Get the location guide on WhatsApp →
+              Get the location guide on WhatsApp{" "}
+              <span aria-hidden className="breathe-arrow">
+                →
+              </span>
             </a>
           </p>
         </div>

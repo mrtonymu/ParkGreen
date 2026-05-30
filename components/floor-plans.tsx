@@ -354,7 +354,10 @@ export function FloorPlans() {
             rel="noopener noreferrer"
             className="font-medium text-coral underline-offset-4 transition-colors hover:underline"
           >
-            Get all 8 floor plans + VVIP price + payment scheme on WhatsApp →
+            Get all 8 floor plans + VVIP price + payment scheme on WhatsApp{" "}
+            <span aria-hidden className="breathe-arrow">
+              →
+            </span>
           </a>
         </p>
       </div>
