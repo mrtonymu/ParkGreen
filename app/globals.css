@@ -110,6 +110,19 @@ body {
   animation: pulse-river 2s infinite;
 }
 
+/* Facilities plan — SVG marker pulse for the active pin (transform-origin is
+   set per-circle in TSX via origin-center). Strokes a coral ring that fades. */
+@keyframes pg-pulse {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
 /* Highlights marquee — seamless loop of duplicated content (translateX -50%). */
 @keyframes marquee {
   from {

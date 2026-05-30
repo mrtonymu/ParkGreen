@@ -9,6 +9,7 @@ import Image from "next/image";
 import heroRender from "@/public/images/pg/about_img_glow.jpg";
 import { WatchFilm } from "@/components/watch-film";
 import { PROJECT } from "@/lib/content";
+import { WA_TEXT, waLink } from "@/lib/wa";
 
 export function Hero() {
   return (
@@ -72,7 +73,7 @@ export function Hero() {
               Get Price List &amp; Floor Plans
             </a>
             <a
-              href={`https://wa.me/${PROJECT.whatsapp}`}
+              href={waLink({ utm: "hero", text: WA_TEXT.generic })}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex h-12 items-center justify-center rounded-full border border-cream/50 px-8 text-[0.74rem] font-medium uppercase tracking-[0.16em] text-cream transition-colors duration-200 hover:bg-cream hover:text-espresso"
@@ -91,7 +92,7 @@ export function Hero() {
           <Divider />
           <Stat value="Freehold" label="Tenure" />
           <Divider />
-          <Stat value="Bridged" label="To Pavilion Bukit Jalil" />
+          <Stat value="By Malton" label="6 delivered in BJC" />
           <Divider />
           <Stat value="1,201–1,905" label="Sq.ft built-up" />
         </div>

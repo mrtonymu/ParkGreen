@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { SectionHeading } from "@/components/section-heading";
 import { LOCATION_AMENITIES } from "@/lib/content";
+import { waLink } from "@/lib/wa";
 
 export function Location() {
   // Single-open accordion; Transportation expanded by default.
@@ -30,8 +31,9 @@ export function Location() {
           />
         </div>
 
-        {/* Accordion */}
-        <div className="space-y-3">
+        {/* Accordion + Reciprocity CTA underneath */}
+        <div>
+          <div className="space-y-3">
           {LOCATION_AMENITIES.map((cat, i) => {
             const isOpen = open === i;
             return (
@@ -66,6 +68,25 @@ export function Location() {
               </div>
             );
           })}
+          </div>
+
+          {/* Reciprocity CTA — buyer's real anxiety here is "how do school
+              runs / commute actually work day-to-day". Answer with a concrete
+              deliverable instead of a generic "contact us". */}
+          <p className="mt-8 border-t border-espresso/10 pt-6 text-sm text-espresso/70">
+            Planning the daily route?{" "}
+            <a
+              href={waLink({
+                utm: "location",
+                text: "Hi, I'd like the Park Green location guide — school catchments, drive times and a marked route map.",
+              })}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-coral underline-offset-4 transition-colors hover:underline"
+            >
+              Get the location guide on WhatsApp →
+            </a>
+          </p>
         </div>
       </div>
     </section>

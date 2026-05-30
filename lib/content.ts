@@ -3,6 +3,12 @@
 // sizes, distances, the Bukit Jalil City track record, developer particulars.
 // All marketing prose is original.
 
+// Agent WhatsApp — kept out of public git history. Set the real number in
+// .env.local (and Vercel project envs) as NEXT_PUBLIC_WHATSAPP_NUMBER.
+// Intl format: 60 + area code + number, no leading + and no spaces.
+const WHATSAPP =
+  process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "60123456789";
+
 export const PROJECT = {
   name: "Park Green",
   positioning: "Pavilion Bukit Jalil",
@@ -13,28 +19,54 @@ export const PROJECT = {
   tenure: "Freehold",
   sizeRange: "1,201 – 1,905 sq.ft.",
   completion: "March 2029",
-  whatsapp: "60123456789", // TODO: agent's real WhatsApp (intl format, no +)
+  whatsapp: WHATSAPP,
 } as const;
 
 export type FloorPlan = {
   type: string;
+  // (M) mirror variant suffix shown beside the type letter, e.g. "A(M)".
+  mirror?: string;
   sqft: number;
+  sqm: number;
   beds: string;
   baths: number;
   fromPrice: string;
   block: string;
   image: string;
+  // Small position-on-floorplate diagram shown next to the spec card.
+  keyplan: string;
+  // 360 walkthrough URL; omit for types without a tour (e.g. C).
+  virtualTour?: string;
 };
 
-// Six layouts across two blocks (Block A: 210 units · Block B: 243 units).
-// "From" prices mirror the live site's per-type headline figures.
+// Eight layouts across two blocks (Block A: 210 units · Block B: 243 units).
+// Specs mirror the live site's Floor Plans page (sqft, sqm, beds, baths).
+// Tabs ordered A, A1, B, B1, C, D, E, F to match the developer's printed
+// materials. VR tours for A/A1 share TypeA, B/B1 share TypeB; C has none.
 export const FLOOR_PLANS: FloorPlan[] = [
-  { type: "A", sqft: 1201, beds: "3", baths: 2, fromPrice: "RM1.2 mil", block: "Block B", image: "/images/pg/floorplans/plans/fp-a.svg" },
-  { type: "B", sqft: 1408, beds: "3+1", baths: 2, fromPrice: "RM1.5 mil", block: "Block A & B", image: "/images/pg/floorplans/plans/fp-b.svg" },
-  { type: "C", sqft: 1485, beds: "3", baths: 2, fromPrice: "RM1.6 mil", block: "Block A & B", image: "/images/pg/floorplans/plans/fp-c.svg" },
-  { type: "D", sqft: 1501, beds: "3", baths: 2, fromPrice: "RM1.8 mil", block: "Block A", image: "/images/pg/floorplans/plans/fp-d.svg" },
-  { type: "F", sqft: 1627, beds: "3", baths: 2, fromPrice: "RM1.9 mil", block: "Block A", image: "/images/pg/floorplans/plans/fp-f.svg" },
-  { type: "E", sqft: 1905, beds: "4", baths: 3, fromPrice: "RM2.0 mil", block: "Block A & B", image: "/images/pg/floorplans/plans/fp-e.svg" },
+  { type: "A",  mirror: "A(M)", sqft: 1201, sqm: 111.54, beds: "3",   baths: 2, fromPrice: "RM1.2 mil", block: "Block B",
+    image: "/images/pg/floorplans/plans/fp-a.svg",  keyplan: "/images/pg/floorplans/plans/kp-a.svg",
+    virtualTour: "https://vr.properly.com.my/ParkGreenPavilionTypeA/" },
+  { type: "A1",                  sqft: 1201, sqm: 111.54, beds: "3",   baths: 2, fromPrice: "RM1.2 mil", block: "Block A & B",
+    image: "/images/pg/floorplans/plans/fp-a1.svg", keyplan: "/images/pg/floorplans/plans/kp-a1.svg",
+    virtualTour: "https://vr.properly.com.my/ParkGreenPavilionTypeA/" },
+  { type: "B",                   sqft: 1408, sqm: 130.85, beds: "3",   baths: 2, fromPrice: "RM1.5 mil", block: "Block A & B",
+    image: "/images/pg/floorplans/plans/fp-b.svg",  keyplan: "/images/pg/floorplans/plans/kp-b.svg",
+    virtualTour: "https://vr.properly.com.my/ParkGreenPavilionTypeB/" },
+  { type: "B1",                  sqft: 1408, sqm: 130.85, beds: "3",   baths: 2, fromPrice: "RM1.5 mil", block: "Block A & B",
+    image: "/images/pg/floorplans/plans/fp-b1.svg", keyplan: "/images/pg/floorplans/plans/kp-b1.svg",
+    virtualTour: "https://vr.properly.com.my/ParkGreenPavilionTypeB/" },
+  { type: "C",                   sqft: 1485, sqm: 137.96, beds: "3",   baths: 2, fromPrice: "RM1.6 mil", block: "Block A & B",
+    image: "/images/pg/floorplans/plans/fp-c.svg",  keyplan: "/images/pg/floorplans/plans/kp-c.svg" },
+  { type: "D",  mirror: "D(M)", sqft: 1501, sqm: 139.43, beds: "3",   baths: 2, fromPrice: "RM1.8 mil", block: "Block A",
+    image: "/images/pg/floorplans/plans/fp-d.svg",  keyplan: "/images/pg/floorplans/plans/kp-d.svg",
+    virtualTour: "https://vr.properly.com.my/ParkGreenPavilionTypeD/" },
+  { type: "E",                   sqft: 1905, sqm: 176.96, beds: "4",   baths: 3, fromPrice: "RM2.0 mil", block: "Block A & B",
+    image: "/images/pg/floorplans/plans/fp-e.svg",  keyplan: "/images/pg/floorplans/plans/kp-e.svg",
+    virtualTour: "https://vr.properly.com.my/ParkGreenPavilionTypeE/" },
+  { type: "F",                   sqft: 1627, sqm: 151.19, beds: "3",   baths: 2, fromPrice: "RM1.9 mil", block: "Block A",
+    image: "/images/pg/floorplans/plans/fp-f.svg",  keyplan: "/images/pg/floorplans/plans/kp-f.svg",
+    virtualTour: "https://vr.properly.com.my/ParkGreenPavilionTypeF/" },
 ];
 
 export type Place = { distance: string; label: string };
@@ -137,15 +169,14 @@ export const BUKIT_JALIL_CITY: Landmark[] = [
   },
 ];
 
-// Marquee highlights — Park Green's own facts.
+// Marquee highlights — the four irreducible selling points repeated just
+// before Enquiry, as a reminder beat. The rest of the facts (concierge,
+// sizes, bumi, BJC, etc.) live in their own sections; keeping the loop
+// short stops it reading as a recap of the whole page.
 export const HIGHLIGHTS: string[] = [
   "Freehold Serviced Residences",
   "Bridged to Pavilion Bukit Jalil",
   "80-Acre Recreational Park at Your Door",
-  "Within Bukit Jalil City",
-  "Bespoke Concierge Service",
-  "Sky Semi-D Homes · 1,201–1,905 sq.ft.",
-  "Bumiputera Discount 5%",
   "Completing 2029",
 ];
 
@@ -173,6 +204,35 @@ export const AWARDS: { src: string; label: string }[] = [
   { src: "/images/pg/awards/apda.png", label: "ASEAN Property Developer Awards" },
 ];
 
+// Five objection-handling answers immediately before the Enquiry form.
+// Every figure is either from the official Park Green FAQ, from the
+// developer's published materials (lib/content.ts), or from publicly
+// known KL property regulations — nothing invented. Specifics that depend
+// on individual circumstances route to WhatsApp.
+export type FAQ = { q: string; a: string };
+export const FAQS: FAQ[] = [
+  {
+    q: "Is the 5% Bumiputera discount automatic?",
+    a: "Eligible Bumiputera buyers receive 5% off the SPA price, applicable across all units in Block A and Block B. Quota is allocated on a first-come basis — message us on WhatsApp to confirm current availability before you commit.",
+  },
+  {
+    q: "What's the monthly maintenance fee?",
+    a: "RM 0.51 per sq.ft. per month, inclusive of sinking fund (set by the Joint Management Body). For reference: a 1,201 sq.ft. unit works out to roughly RM 612/month; a 1,905 sq.ft. unit, roughly RM 971/month.",
+  },
+  {
+    q: "Is the title Freehold? Any quirks I should know?",
+    a: "Yes — Freehold tenure, with a Commercial title under the Housing Development Act (HDA). Commercial-title is standard for serviced apartments in KL but has small differences vs a Residential title on loan margin and stamp duty — we'll walk you through which banks offer the best terms for HDA Commercial.",
+  },
+  {
+    q: "Can foreigners buy at Park Green?",
+    a: "Yes. Kuala Lumpur's foreign-buyer minimum threshold is currently RM 1 million, and every Park Green layout sits above it — even the entry-level Type A starts at RM 1.2 mil. Foreign-ownership rules can shift, so we'll verify the current state for the specific unit you're considering.",
+  },
+  {
+    q: "How do I visit the sales gallery?",
+    a: "Pavilion Bukit Jalil, Malton Property Gallery, Level 5 — open Mon-Sun, 10am-6pm by appointment. Send a preferred date and time on WhatsApp and we'll book your slot, then meet you on-site to walk through the show units and floor plans.",
+  },
+];
+
 export const DEVELOPER = {
   developer: "Regal Path Sdn. Bhd. (201601002434)",
   operator: "Malton Berhad",
@@ -190,44 +250,87 @@ export const DEVELOPER = {
   projectAddress: "Lot 5.18.00, 2 Persiaran Jalil 8, Bukit Jalil, 57000 Kuala Lumpur",
 } as const;
 
-// ─────────────────────────────────────────────────────────────────────────
-// TODO (pending official Park Green / Malton asset pack):
-// The facilities masterplan + amenity list below are PLACEHOLDERS carried over
-// from the previous build. Park Green's site loads these via a runtime gallery
-// that isn't programmatically extractable, so the real facility names, the
-// numbered site plan and its pin coordinates must come from the official deck.
-// ─────────────────────────────────────────────────────────────────────────
-export const FACILITIES: { group: string; items: string[] }[] = [
-  { group: "Water", items: ["Infinity pool", "Leisure pool", "Kid's pool", "Jacuzzi & cabana", "Sun deck"] },
-  { group: "Gardens", items: ["Central park", "Themed gardens", "Strolling path", "Play & exercise lawns"] },
-  { group: "Active", items: ["Gymnasium", "Steam room", "Games room", "Indoor kid's play"] },
-  { group: "Social", items: ["Multi-purpose hall", "Lounges", "Library", "Outdoor BBQ"] },
-];
+// Facilities organised by level, the structure the live site uses.
+// Level 11 is the main facilities deck (carries the SVG plan); Level 1 is the
+// lobby, Level 47 the rooftop. The Level 11 entry also embeds the pin
+// coordinates for the interactive plan overlay: each pin is [cx, cy, item]
+// where item is 1-based into `items`. cx/cy match the plan SVG's viewBox.
+export type FacilityLevel = {
+  level: string;
+  note?: string;
+  plan?: string;
+  planViewBox?: { w: number; h: number };
+  pins?: [number, number, number][];
+  items: string[];
+};
 
-export const FACILITIES_LEGEND: string[] = [
-  "Leisure Pool", "Sun Deck", "Jacuzzi", "Kid's Pool", "Kid's Play Area",
-  "Play Lawn", "Pavilion", "Strolling Garden Path", "Scented Gardens",
-  "Outdoor BBQ", "Infinity Lap Pool", "Sun Bath Decks", "Cabana", "Islet Deck",
-  "Shallow Pool", "BBQ", "Dining Lounges", "Exercise Lawn", "Central Park",
-  "Circle Gateway", "Themed Gardens", "Toilet", "Multi-purpose Hall", "Prep Room",
-  "Entertainment Room", "Games Room", "Indoor Kid's Play", "Gymnasium",
-  "Therapy Room", "Library", "Reading Room", "Steam Room",
-];
-
-export const FACILITY_PINS: { n: number; top: string; left: string }[] = [
-  { n: 1, top: "29%", left: "24%" }, { n: 2, top: "23%", left: "32.5%" },
-  { n: 3, top: "36%", left: "21.5%" }, { n: 4, top: "39%", left: "26%" },
-  { n: 5, top: "47%", left: "15%" }, { n: 6, top: "47%", left: "22%" },
-  { n: 7, top: "24%", left: "20%" }, { n: 8, top: "16%", left: "30.5%" },
-  { n: 9, top: "22%", left: "39%" }, { n: 10, top: "40%", left: "32.5%" },
-  { n: 11, top: "37%", left: "75%" }, { n: 12, top: "33%", left: "65%" },
-  { n: 13, top: "44%", left: "82%" }, { n: 14, top: "29%", left: "71%" },
-  { n: 15, top: "31%", left: "81%" }, { n: 16, top: "37%", left: "89%" },
-];
-
-export const FACILITY_RENDERS: { src: string; caption: string }[] = [
-  { src: "/images/pg/gallery/gallery-4.jpg", caption: "Pool Deck" },
-  { src: "/images/pg/gallery/gallery-6.jpg", caption: "Sky Lounge" },
-  { src: "/images/pg/gallery/gallery-2.jpg", caption: "Living & Dining" },
-  { src: "/images/pg/gallery/gallery-9.jpeg", caption: "Bedroom Suite" },
+export const FACILITY_LEVELS: FacilityLevel[] = [
+  {
+    level: "1",
+    note: "Lobby",
+    items: [
+      "Concierge",
+      "Waiting Lounge",
+      "Mail Room",
+      "Food Delivery Zone",
+      "Parcel Room",
+      "EV Charging",
+    ],
+  },
+  {
+    level: "11",
+    note: "Facilities Deck",
+    plan: "/images/pg/facilities/facilities-level11.svg",
+    planViewBox: { w: 831, h: 515 },
+    // Pin coordinates extracted from the official plan SVG; each tuple maps a
+    // green dot on the plan to its facility row in `items` below.
+    pins: [
+      [714, 208, 1],   // Multipurpose Hall
+      [544, 373, 2],   // Flex Fitness Zone
+      [466, 453, 3],   // Yoga Flow Room
+      [409, 418, 4],   // Games Room
+      [339, 378, 5],   // Kindergarten
+      [284, 343, 6],   // Management Office
+      [201, 301, 7],   // Changing Room
+      [171, 238, 8],   // Steam Room
+      [270, 301, 8],   // Steam Room — second marker
+      [64, 223, 9],    // Co-working Lounge
+      [144, 51, 10],   // Social Garden
+      [209, 213, 11],  // Outdoor Lounge
+      [467, 236, 12],  // Children's Play Area
+      [449, 165, 13],  // Wading Pool
+      [261, 58, 14],   // Bubbly Jacuzzi
+      [419, 58, 15],   // Infinity Pool
+      [609, 33, 16],   // BBQ Terrace
+    ],
+    items: [
+      "Multipurpose Hall",
+      "Flex Fitness Zone",
+      "Yoga Flow Room",
+      "Games Room",
+      "Kindergarten (Space Only)",
+      "Management Office",
+      "Changing Room",
+      "Steam Room",
+      "Co-working Lounge",
+      "Social Garden",
+      "Outdoor Lounge",
+      "Children's Play Area",
+      "Wading Pool",
+      "Bubbly Jacuzzi",
+      "Infinity Pool",
+      "BBQ Terrace",
+    ],
+  },
+  {
+    level: "47",
+    note: "Rooftop",
+    items: [
+      "Sky Lounge",
+      "Private Lounge & Executive Dining",
+      "Sky Terrace Seating",
+      "Outdoor Yoga Deck",
+      "Open Deck",
+    ],
+  },
 ];

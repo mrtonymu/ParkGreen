@@ -44,7 +44,7 @@ export function Sustainability() {
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_80%_at_50%_-10%,rgba(247,244,242,0.10),transparent_60%)]"
       />
-      <div className="relative mx-auto max-w-5xl px-6 py-20 text-center md:py-28">
+      <div className="relative mx-auto max-w-5xl px-6 py-24 text-center md:py-32">
         <p className="text-[0.72rem] font-medium uppercase tracking-[0.28em] text-cream/70">
           A Symbol of Privilege
         </p>
@@ -77,6 +77,7 @@ export function Sustainability() {
             </li>
           ))}
         </ul>
+
       </div>
     </section>
   );

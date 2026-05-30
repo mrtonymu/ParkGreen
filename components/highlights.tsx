@@ -1,7 +1,9 @@
 import { HIGHLIGHTS } from "@/lib/content";
 
 // Seamless highlights marquee — pure CSS (duplicated track, hover-pauses,
-// respects reduced-motion). Dark strip under the hero.
+// respects reduced-motion). Dark transition strip into the FAQ + Enquiry
+// chapter below. No bundled pre-CTA — the Enquiry band itself is the
+// conversion moment, and stacking another CTA here only dilutes it.
 export function Highlights() {
   return (
     <section

@@ -1,10 +1,11 @@
-import { PROJECT } from "@/lib/content";
+import { WA_TEXT, waLink } from "@/lib/wa";
 
-// Click-to-chat — understated ink circle, not a loud green bubble.
-export function WhatsAppFab() {
+// Click-to-chat — understated ink circle, not a loud green bubble. Pass `utm`
+// to distinguish the home-page FAB from the /360 FAB in analytics.
+export function WhatsAppFab({ utm = "fab" }: { utm?: string } = {}) {
   return (
     <a
-      href={`https://wa.me/${PROJECT.whatsapp}`}
+      href={waLink({ utm, text: WA_TEXT.generic })}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"
