@@ -136,18 +136,35 @@ export function SiteFooter() {
           </div>
         </div>
 
-        {/* Legal disclosure + sales-consultant attribution */}
-        <div className="mt-16 space-y-4 border-t border-cream/15 pt-8 text-xs leading-relaxed text-cream/45">
-          <p>
-            {PROJECT.name} — {DEVELOPER.propertyType}, {DEVELOPER.tenure}.
-            Developed by {DEVELOPER.developer}, operated by {DEVELOPER.operator}.{" "}
-            {DEVELOPER.blocks}. Developer&apos;s licence {DEVELOPER.license};
-            advertising &amp; sales permit {DEVELOPER.adPermit}, issued by{" "}
-            {DEVELOPER.authority}. Expected completion {DEVELOPER.completion}.
-            Selling price {DEVELOPER.priceRange}; Bumiputera discount{" "}
-            {DEVELOPER.bumiDiscount}.
-          </p>
-          <p>
+        {/* Legal disclosure + sales-consultant attribution.
+            KPKT/HDA 1966 requires developer licence, APDL, price range and
+            Bumi discount on all property advertising — we satisfy that with
+            the collapsible block (visible in the DOM, indexable, one tap to
+            expand). The shorter "Official sales page…" line stays open
+            because it speaks to the buyer, not the regulator. */}
+        <div className="mt-16 border-t border-cream/15 pt-8 text-xs leading-relaxed text-cream/45">
+          <details className="group">
+            <summary className="flex cursor-pointer list-none items-center gap-2 text-[0.62rem] font-medium uppercase tracking-[0.22em] text-cream/55 transition-colors hover:text-cream/80 [&::-webkit-details-marker]:hidden">
+              <span>Developer Disclosure &amp; Licence (KPKT)</span>
+              <span
+                aria-hidden
+                className="transition-transform duration-200 group-open:rotate-180"
+              >
+                ▾
+              </span>
+            </summary>
+            <p className="mt-4 text-cream/45">
+              {PROJECT.name} — {DEVELOPER.propertyType}, {DEVELOPER.tenure}.
+              Developed by {DEVELOPER.developer}, operated by{" "}
+              {DEVELOPER.operator}. {DEVELOPER.blocks}. Developer&apos;s licence{" "}
+              {DEVELOPER.license}; advertising &amp; sales permit{" "}
+              {DEVELOPER.adPermit}, issued by {DEVELOPER.authority}. Expected
+              completion {DEVELOPER.completion}. Selling price{" "}
+              {DEVELOPER.priceRange}; Bumiputera discount{" "}
+              {DEVELOPER.bumiDiscount}.
+            </p>
+          </details>
+          <p className="mt-4">
             Official sales page. All renderings are artist&apos;s impressions.
             Prices, packages and unit details subject to the final signed SPA.
           </p>
