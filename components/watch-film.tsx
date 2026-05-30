@@ -45,12 +45,16 @@ export function WatchFilm() {
           <path d="M6 6l12 12M18 6L6 18" />
         </svg>
       </button>
+      {/* Player sized to push YouTube into its 1080p quality bracket
+          (≥1280px wide). The vq=hd1080 hint is largely deprecated since
+          2018 but still honored by some clients; iv_load_policy=3 hides
+          annotations for a cleaner viewing surface. */}
       <div
-        className="relative aspect-video w-full max-w-5xl overflow-hidden rounded-[2px] shadow-2xl"
+        className="relative aspect-video w-full max-w-7xl overflow-hidden rounded-[2px] shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         <iframe
-          src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
+          src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&rel=0&modestbranding=1&playsinline=1&vq=hd1080&iv_load_policy=3`}
           title="Park Green film"
           allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
           allowFullScreen
