@@ -58,7 +58,9 @@ export function Hero() {
             className="rise mt-6 font-display text-[clamp(1.4rem,3vw,2.25rem)] font-normal leading-snug text-cream/90"
             style={{ animationDelay: "220ms" }}
           >
-            4 bedrooms, 50 storeys, one bridge to Pavilion.
+            4 bedrooms, 50 storeys
+            <br />
+            one bridge to Pavilion.
           </h1>
 
           <div
